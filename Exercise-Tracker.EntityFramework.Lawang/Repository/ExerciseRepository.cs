@@ -12,9 +12,10 @@ public class ExerciseRepository : Repository<Exercise>, IExerciseRepository
         _db = dbContext;
     }
 
-    public async Task UpdateAsync(Exercise entity)
+    public async Task<Exercise> UpdateAsync(Exercise entity)
     {
         _db.Exercises.Update(entity);
         await _db.SaveChangesAsync();
+        return entity;
     }
 }

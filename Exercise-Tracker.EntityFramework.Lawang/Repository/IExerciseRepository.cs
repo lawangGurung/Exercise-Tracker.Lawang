@@ -4,5 +4,5 @@ namespace Exercise_Tracker.EntityFramework.Lawang.Repository;
 
 public interface IExerciseRepository : IRepository<Exercise>
 {
-    Task UpdateAsync(Exercise entity);
+    Task<Exercise> UpdateAsync(Exercise entity);
 }

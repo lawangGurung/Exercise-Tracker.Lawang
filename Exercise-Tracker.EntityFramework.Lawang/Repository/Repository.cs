@@ -13,16 +13,18 @@ public class Repository<T> : IRepository<T> where T : class
         _dbContext = dbContext;
         _dbSet = _dbContext.Set<T>();
     }
-    public async Task CreateAsync(T entity)
+    public async Task<T> CreateAsync(T entity)
     {
         await _dbSet.AddAsync(entity);
-        await SaveAsync(); 
+        await SaveAsync();
+        return entity;
     }
 
-    public async Task DeleteAsync(T entity)
+    public async Task<T> DeleteAsync(T entity)
     {
         _dbSet.Remove(entity);
         await SaveAsync();
+        return entity;
     }
 
     public async Task<List<T>> GetAllAsync()

@@ -1,6 +1,7 @@
 ﻿using Exercise_Tracker.EntityFramework.Lawang.Data;
 using Exercise_Tracker.EntityFramework.Lawang.Models;
 using Exercise_Tracker.EntityFramework.Lawang.Repository;
+using Exercise_Tracker.EntityFramework.Lawang.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +17,8 @@ serviceCollection.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
-serviceCollection.AddScoped<IExerciseRepository, ExerciseRepository>();
+serviceCollection.AddTransient<IExerciseRepository, ExerciseRepository>();
+serviceCollection.AddScoped<IExerciseService, ExerciseService>();
 
 
 // Creates the instance of sevice provider to get access the services from the service collection
