@@ -30,7 +30,7 @@ public static class View
 
         AnsiConsole.Write(panel);
     }
-    public static void RenderTable(IEnumerable<Exercise> exercises, Color Aqua)
+    public static void RenderTable(List<Exercise> exercises, Color Aqua)
     {
         if (exercises.Count() == 0)
         {
@@ -53,10 +53,10 @@ public static class View
         table.AddColumns(new TableColumn[]
         {
            new TableColumn("[darkgreen bold]Id[/]").Centered(),
-           new TableColumn("[darkcyan bold]Employee Name[/]").Centered(),
-           new TableColumn("[darkcyan bold]Start Time[/]").Centered(),
-           new TableColumn("[darkcyan bold]End Time[/]").Centered(),
-           new TableColumn("[darkgreen bold]Duration[/]").Centered()
+           new TableColumn("[darkcyan bold]Start Date [/]").Centered(),
+           new TableColumn("[red1 bold]End Date [/]").Centered(),
+           new TableColumn("[darkcyan bold]Span[/]").Centered(),
+           new TableColumn("[darkgreen bold]Comment[/]").Centered()
         });
 
         foreach (var exercise in exercises)
@@ -64,8 +64,8 @@ public static class View
             table.AddRow(
                 new Markup($"[cyan1]{exercise.Id}[/]").Centered(),
                 new Markup($"[turquoise2]{exercise.DateStart}[/]").Centered(),
-                new Markup($"[turquoise2]{exercise.DateEnd}[/]").Centered(),
-                new Markup($"[turquoise2]{exercise.Duration}[/]").Centered(),
+                new Markup($"[red]{exercise.DateEnd}[/]").Centered(),
+                new Markup($"[yellow]{exercise.Duration}[/]").Centered(),
                 new Markup($"[turquoise2]{exercise.Comments}[/]").Centered()
 
             );
@@ -76,9 +76,8 @@ public static class View
 
     public static void ShowDateInstruction()
     {
-        Console.Clear();
-        var panel = new Panel(new Markup("Please enter a [green]time[/] (e.g., 12:30 [cyan]AM[/] or 02:30 [cyan]PM[/]) in 12 hr format:\n\t\t[grey bold](press '0' to go back to Menu.)[/]"))
-                .Header("[bold cyan]Time Input[/]", Justify.Center)
+        var panel = new Panel(new Markup("Please enter a [green]Date[/] in (dd/MM/yy) format (e.g., [cyan]30/11/24[/] or [cyan]01/01/22[/]): \n\t\t[grey bold](press '0' to go back to Menu.)[/]"))
+                .Header("[bold cyan]Date Input[/]", Justify.Center)
                 .Padding(1, 1, 1, 1)
                 .Border(BoxBorder.Rounded)
                 .BorderColor(Color.Blue3);
