@@ -55,7 +55,7 @@ public static class View
            new TableColumn("[darkgreen bold]Id[/]").Centered(),
            new TableColumn("[darkcyan bold]Start Date [/]").Centered(),
            new TableColumn("[red1 bold]End Date [/]").Centered(),
-           new TableColumn("[darkcyan bold]Span[/]").Centered(),
+           new TableColumn("[darkcyan bold]Total Days[/]").Centered(),
            new TableColumn("[darkgreen bold]Comment[/]").Centered()
         });
 
@@ -63,10 +63,11 @@ public static class View
         {
             table.AddRow(
                 new Markup($"[cyan1]{exercise.Id}[/]").Centered(),
-                new Markup($"[turquoise2]{exercise.DateStart}[/]").Centered(),
-                new Markup($"[red]{exercise.DateEnd}[/]").Centered(),
-                new Markup($"[yellow]{exercise.Duration}[/]").Centered(),
+                new Markup($"[turquoise2]{exercise.DateStart.ToString("D")}[/]").Centered(),
+                new Markup($"[red]{exercise.DateEnd.ToString("D")}[/]").Centered(),
+                new Markup($"[yellow]{exercise.Duration.Days} days[/]").Centered(),
                 new Markup($"[turquoise2]{exercise.Comments}[/]").Centered()
+
 
             );
         }
