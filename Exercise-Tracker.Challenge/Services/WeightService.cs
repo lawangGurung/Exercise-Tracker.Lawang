@@ -1,22 +1,24 @@
+using System;
 using Exercise_Tracker.Challenge.Repositories;
 using Spectre.Console;
 
 namespace Exercise_Tracker.Challenge.Services;
 
-public class CardioService
+public class WeightService
 {
-    private readonly ICardioRepository _cardioRepository;
-    public CardioService(ICardioRepository repo)
+    private readonly IWeightRepository _weightRepository;
+    public WeightService(IWeightRepository weightRepository)
     {
-        _cardioRepository = repo;
+        _weightRepository = weightRepository;
     }
+
     public async Task<Exercise?> CreateAsync(Exercise entity)
     {
         try
         {
             return await AnsiConsole.Status().StartAsync("Creating in database...", async ctx =>
             {
-                return await _cardioRepository.CreateAsync(entity);
+                return await _weightRepository.CreateAsync(entity);
             });
         }
         catch (Exception ex)
@@ -34,7 +36,7 @@ public class CardioService
 
             return await AnsiConsole.Status().StartAsync("[bold]Deleting data from repository...[/]", async ctx =>
             {
-                return await _cardioRepository.DeleteAsync(entity);
+                return await _weightRepository.DeleteAsync(entity);
             });
         }
         catch (Exception ex)
@@ -51,7 +53,7 @@ public class CardioService
         {
             return await AnsiConsole.Status().StartAsync("[bold]Fetching data from repository..[/]", async ctx =>
             {
-                return await _cardioRepository.GetAllAsync();
+                return await _weightRepository.GetAllAsync();
             });
         }
         catch (Exception ex)
@@ -68,7 +70,7 @@ public class CardioService
         {
             return await AnsiConsole.Status().StartAsync("[bold]Updating data in repository...[/]", async ctx =>
             {
-                return await _cardioRepository.UpdateAsync(entity);
+                return await _weightRepository.UpdateAsync(entity);
             });
         }
         catch (Exception ex)

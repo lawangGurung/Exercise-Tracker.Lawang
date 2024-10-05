@@ -6,10 +6,12 @@ public class ApplicationController
 {
     private readonly UserInput _userInput;
     private readonly CardioController _cardioController;
-    public ApplicationController(UserInput userInput, CardioController cardioController)
+    private readonly WeightController _weightController;
+    public ApplicationController(UserInput userInput, CardioController cardioController, WeightController weightController)
     {
        _userInput = userInput; 
        _cardioController = cardioController;
+       _weightController = weightController;
     }
     public async Task Run()
     {
@@ -25,6 +27,7 @@ public class ApplicationController
             switch(option)
             {
                 case "Weights (EF Core)":
+                    await _weightController.Run();
                     break;
 
                 case "Cardio (Raw SQL)":
@@ -32,6 +35,8 @@ public class ApplicationController
                     break;
 
                 case "Exit":
+                    Console.Clear();
+                    View.RenderTitle("Have a nice day!!", Color.DarkSeaGreen3, Color.Fuchsia, "APPLICATION", "blue3", BoxBorder.Double);
                     exitApp = true;
                     break;
             }

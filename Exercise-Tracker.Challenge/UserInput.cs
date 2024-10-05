@@ -17,7 +17,19 @@ public class UserInput
 
         return GetSelection(listOfMenuOption, "[yellow bold]Choose your operation[/]", "Select from the Menu given below");
     }
+    public string ChooseWeightDataOperation()
+    {
+        var listOfMenuOption = new List<string>()
+        {
+            "Get All Weights",
+            "Create Weight",
+            "Update Weight",
+            "Delete Weight",
+            "Go Back To Menu"
+        };
 
+        return GetSelection(listOfMenuOption, "[yellow bold]Choose your operation[/]", "Select from the Menu given below");
+    }
     public string ChooseExerciseType()
     {
         var listOfExercise = new List<string>()
