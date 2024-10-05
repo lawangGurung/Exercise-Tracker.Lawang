@@ -1,15 +1,17 @@
 using Spectre.Console;
 
-namespace Exercise_Tracker.Challenge;
+namespace Exercise_Tracker.Challenge.Controllers;
 
 public class ApplicationController
 {
     private readonly UserInput _userInput;
-    public ApplicationController(UserInput userInput)
+    private readonly CardioController _cardioController;
+    public ApplicationController(UserInput userInput, CardioController cardioController)
     {
        _userInput = userInput; 
+       _cardioController = cardioController;
     }
-    public void Run()
+    public async Task Run()
     {
         bool exitApp = false;
 
@@ -26,6 +28,7 @@ public class ApplicationController
                     break;
 
                 case "Cardio (Raw SQL)":
+                    await _cardioController.Run();
                     break;
 
                 case "Exit":

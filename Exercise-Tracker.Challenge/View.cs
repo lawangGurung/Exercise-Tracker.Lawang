@@ -62,9 +62,9 @@ public static class View
         {
             table.AddRow(
                 new Markup($"[cyan1]{exercise.Id}[/]").Centered(),
-                new Markup($"[turquoise2]{exercise.DateStart}[/]").Centered(),
-                new Markup($"[red]{exercise.DateEnd}[/]").Centered(),
-                new Markup($"[yellow]{exercise.Duration}[/]").Centered(),
+                new Markup($"[turquoise2]{exercise.DateStart.ToString("D")}[/]").Centered(),
+                new Markup($"[red]{exercise.DateEnd.ToString("D")}[/]").Centered(),
+                new Markup($"[yellow]{exercise.Duration.Days}[/]").Centered(),
                 new Markup($"[turquoise2]{exercise.Comments}[/]").Centered()
 
             );

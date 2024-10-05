@@ -4,15 +4,15 @@ namespace Exercise_Tracker.Challenge;
 
 public class UserInput
 {
-    public string ChooseDataOperation()
+    public string ChooseCardioDataOperation()
     {
         var listOfMenuOption = new List<string>()
         {
-            "Get All Exercises",
-            "Create Exercise",
-            "Update Exercise",
-            "Delete Exercise",
-            "Exit"
+            "Get All Cardios",
+            "Create Cardio",
+            "Update Cardio",
+            "Delete Cardio",
+            "Go Back To Menu"
         };
 
         return GetSelection(listOfMenuOption, "[yellow bold]Choose your operation[/]", "Select from the Menu given below");
